@@ -24,7 +24,8 @@ class CategorySerializer(serializers.Serializer):
     This class is created to validate the category field.
     """
 
-    name = serializers.CharField(required=True)
+    id = serializers.IntegerField(required=False)
+    name = serializers.CharField(required=True, max_length=30)
 
 
 class ProductSerializer(serializers.Serializer):
@@ -32,15 +33,15 @@ class ProductSerializer(serializers.Serializer):
     This class is created to validate the product field.
     """
 
-    product_name = serializers.CharField()
+    product_name = serializers.CharField(max_length=30)
     image = serializers.ImageField()
     category = serializers.IntegerField()
-    description = serializers.CharField()
+    description = serializers.CharField(max_length=255)
 
 
 class ProductResponseSerializer(serializers.Serializer):
     """
-    This class is created to validate the product field.
+    This class is created to send the response of product endpoint.
     """
 
     product_name = serializers.CharField()
